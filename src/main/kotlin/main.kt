@@ -23,14 +23,12 @@ fun hoursAgo(secondsAgo: Int): String {
     return hoursAgoString
 }
 
-fun timeAgo(secondsAgo: Int): String {
-    val timeAgoString = when {
-        secondsAgo in 0..60 -> "был(а) только что"
-        secondsAgo in 61..3600 -> "был(а) в сети ${minutesAgo(secondsAgo)}"
-        secondsAgo in 3601..86400 -> "был(а) в сети ${hoursAgo(secondsAgo)}"
-        secondsAgo in 86401..172_800 -> "был(а) в сети вчера"
-        secondsAgo in 172_801..259_200 -> "был(а) в сети позавчера"
+fun timeAgo(secondsAgo: Int): String = when (secondsAgo) {
+        in 0..60 -> "был(а) только что"
+        in 61..3600 -> "был(а) в сети ${minutesAgo(secondsAgo)}"
+        in 3601..86400 -> "был(а) в сети ${hoursAgo(secondsAgo)}"
+        in 86401..172_800 -> "был(а) в сети вчера"
+        in 172_801..259_200 -> "был(а) в сети позавчера"
         else -> "был(а) в сети давно"
     }
-    return timeAgoString
-}
+
